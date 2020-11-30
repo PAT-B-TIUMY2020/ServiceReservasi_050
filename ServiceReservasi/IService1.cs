@@ -15,7 +15,7 @@ namespace ServiceReservasi
         string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelpon, int JumlahPemesanan, string IDLokasi);//method (proses input data)
 
         [OperationContract]
-        string editPemesanan(string IDPemesanan, string NamaCustomer);
+        string editPemesanan(string IDPemesanan, string NamaCustomer, string No_telpon);
 
         [OperationContract]
         string deletePemesanan(string IDPemesanan);
@@ -29,27 +29,6 @@ namespace ServiceReservasi
         [OperationContract]
         List<Pemesanan> Pemesanan();
 
-    }
-
-    [DataContract]
-    public class CompositeType
-    {
-        bool boolValue = true;
-        string stringValue = "Hello ";
-
-        [DataMember]
-        public bool BoolValue
-        {
-            get { return boolValue; }
-            set { boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return stringValue; }
-            set { stringValue = value; }
-        }
     }
 
     [DataContract]
@@ -90,7 +69,7 @@ namespace ServiceReservasi
         [DataMember]
         public int JumlahPemesanan { get; set; }
         [DataMember]
-        public string IDLokasi { get; set; }
+        public string Lokasi { get; set; }
 
     }
 }
