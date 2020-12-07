@@ -122,11 +122,10 @@ namespace ServiceReservasi
 
         public List<Pemesanan> Pemesanan()
         {
-            List<Pemesanan> pemesanans = new List<Pemesanan>();//proses utk mendeclare nama list yg telah dibuat 
+            List<Pemesanan> pemesanan = new List<Pemesanan>();//proses utk mendeclare nama list yg telah dibuat 
             try
             {
-                string sql = " select ID_reservasi, Nama_customer, No_telpon, " +
-                    "Jumlah_pemesanan, Nama_Lokasi from dbo.Pemesanan p join dbo.Lokasi l on p.ID_lokasi = l.ID_lokasi";
+                string sql = "select ID_reservasi, Nama_customer, No_telpon, Jumlah_pesanan, Nama_lokasi from dbo.Pemesanan p join dbo.Lokasi l on p.ID_lokasi = l.ID_lokasi";
                 connection = new SqlConnection(constring);//fungsi konek ke database
                 com = new SqlCommand(sql, connection);
                 connection.Open();//proses execude query
@@ -139,9 +138,9 @@ namespace ServiceReservasi
                     data.IDPemesanan = reader.GetString(0);
                     data.NamaCustomer = reader.GetString(1);
                     data.NoTelpon = reader.GetString(2);
-                    data.JumlahPemesanan = reader.GetInt32(3);
+                    data.JumlahPemesanan = reader.GetInt32(3); 
                     data.Lokasi = reader.GetString(4);
-                    pemesanans.Add(data);//mengumpulkan data yang awalnya dari array
+                    pemesanan.Add(data);//mengumpulkan data yang awalnya dari array
                 }
                 connection.Close();//untuk menutup akses ke db
             }
@@ -149,7 +148,7 @@ namespace ServiceReservasi
             {
                 Console.WriteLine(ex);
             }
-            return pemesanans;
+            return pemesanan;
 
         }
 
